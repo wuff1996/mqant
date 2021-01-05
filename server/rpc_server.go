@@ -120,12 +120,9 @@ func (s *rpcServer) ServiceRegister() error {
 	node.Metadata["server"] = s.String()
 	node.Metadata["registry"] = config.Registry.String()
 
-	s.RLock()
-	// Maps are ordered randomly, sort the keys for consistency
 
 	var endpoints []*registry.Endpoint
 
-	s.RUnlock()
 
 	service := &registry.Service{
 		Name:      config.Name,
